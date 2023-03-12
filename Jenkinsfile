@@ -6,19 +6,19 @@ pipeline {
     stages {
         stage('vcs') {
             steps {
-                git url: 'https://github.com/khajadevopsmarch23/StudentCoursesRestAPI',
+                git url: 'https://github.com/ramyagaraga/StudentCoursesRestAPI',
                     branch: 'develop'
             }
         }
         stage('build') {
             steps {
-                sh 'docker image build -t shaikkhajaibrahim/spc:latest .'
+                sh 'docker image build -t ramyagaraga/src:latest .'
             }
         }
         stage('scan and push') {
             steps {
-                sh 'echo docker scan shaikkhajaibrahim/spc:latest'
-                sh 'docker image push shaikkhajaibrahim/spc:latest'
+                sh 'echo docker scan ramyagaraga/src:latest'
+                sh 'docker image push ramyagaraga/src:latest'
             }
         }
     }
