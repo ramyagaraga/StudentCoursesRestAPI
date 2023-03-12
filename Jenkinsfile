@@ -20,7 +20,15 @@ pipeline {
                 sh 'echo docker scan ramyagaraga/src:latest'
                 sh 'docker image push ramyagaraga/src:latest'
             }
-        }
+        } 
+        stage('deploy to st') {
+            steps {
+                sh 'kubectl apply -f ./K8s/mysql.yml'
+                sh 'kubectl apply -f ./K8s/flask.yml'
+                sh 'sleep 10s'
+                sh 'kubectl get svc'
+            }
+        }    
     }
 
 }
